@@ -15,10 +15,9 @@
         <title>NASA Languages</title>
     </head>
     <body>
-        <c:if test="${not empty error-message}">
-            <p>An error occurred: ${error-message}</p>
+        <c:if test="${my-error-message.class.simpleName=='String'}">
+            <p>An error occurred: ${my-error-message}</p>
         </c:if>
-        <c:if test="${not empty languages}">
         <canvas id="myChart" width="400" height="400"></canvas>
         <script>
             var labelsArray = Array();
@@ -47,6 +46,5 @@
                 </tr>
             </c:forEach>
         </table>
-        </c:if>
     </body>
 </html>

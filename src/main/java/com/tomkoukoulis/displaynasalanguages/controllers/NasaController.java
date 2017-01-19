@@ -26,9 +26,9 @@ public class NasaController extends Restful {
         try {
             model.addAttribute("languages", getLanguages());
         } catch (RestClientException rce) {
-            model.addAttribute("error-message", "There was a problem communicating with GitHub.");
+            model.addAttribute("my-error-message", "There was a problem communicating with GitHub.");
         } catch (NumberFormatException nfe) {
-            model.addAttribute("error-message", "The data received from GitHub had an error.");
+            model.addAttribute("my-error-message", "The data received from GitHub had an error.");
         }
 
         return "index";
