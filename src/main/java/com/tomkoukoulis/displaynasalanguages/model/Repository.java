@@ -33,4 +33,18 @@ public class Repository {
     public void setName(String name) {
         this.name = name;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Repository)) return false;
+
+        Repository repo = (Repository) obj;
+        boolean isEqual = false;
+        
+        if(this.name.equalsIgnoreCase(repo.getName()) && this.id == repo.getId()){
+            isEqual = true;
+        }
+        
+        return isEqual;
+    }
 }
