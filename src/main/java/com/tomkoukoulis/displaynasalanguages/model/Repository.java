@@ -1,4 +1,3 @@
-
 package com.tomkoukoulis.displaynasalanguages.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
