@@ -67,23 +67,25 @@ public class NasaControllerTest {
 
         RestTemplate restTemplate = instance.getRestTemplate();
         MockRestServiceServer server = MockRestServiceServer.bindTo(restTemplate).build();
-        server.expect(once(), requestTo("/test"))
+        server.expect(once(), requestTo(NasaController.GITHUB_LIST_NASA_REPOSITORIES_URL))
             .andExpect(method(HttpMethod.GET))
             .andRespond(withSuccess(
                   "["
-                    + "{ \"id\" : \"0\", \"name\" : \"DAVEtools\"}, "
+                    + "{ \"id\" : \"0\", \"name\" : \"DAVETools\"}, "
                     + "{ \"id\" : \"1\", \"name\" : \"Tools\"}"
                 + "]", MediaType.APPLICATION_JSON));
 
-        Repository[] expResult = new Repository[2];
-        expResult[0].setId(0);
-        expResult[0].setName("DAVEtools");
-        expResult[1].setId(1);
-        expResult[1].setName("Tools");
+        Repository[] expectedResult = new Repository[2];
+        expectedResult[0] = new Repository();
+        expectedResult[0].setId(0);
+        expectedResult[0].setName("DAVETools");
+        expectedResult[1] = new Repository();
+        expectedResult[1].setId(1);
+        expectedResult[1].setName("Tools");
 
         Repository[] result = instance.getRepositories();
 
-        Assert.assertArrayEquals(expResult, result);
+        assertArrayEquals(expectedResult, result);
     }
 
     /**
