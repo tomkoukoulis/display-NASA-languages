@@ -26,4 +26,19 @@ public class Languages {
     public void set(String key, String value) {
         languages.put(key, value);
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Languages)) 
+            return false;
+
+        Languages languages = (Languages) obj;
+        boolean isEqual = false;
+        
+        if(this.languages.keySet().equals(languages.get().keySet())){
+            isEqual = true;
+        }
+        
+        return isEqual;
+    }
 }
